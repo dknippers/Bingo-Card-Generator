@@ -77,6 +77,8 @@ class Bingo
 
     @pdf.font @font
     @pdf.line_width = line_width
+
+    @generated_cards = 0
   end
 
   def read_data
@@ -258,6 +260,10 @@ class Bingo
           min_font_size: 0
         )
       end
+
+      @generated_cards += 1
+
+      break if @generated_cards == @num_cards
     end
   end
 
@@ -277,7 +283,7 @@ end
 if ARGV.length == 0
   Bingo.new(rows: 5, cols: 5, header: 'Simple Math Bingo Card :-)', cards_per_page: 3).generate
 else
-  rows, cols, num, header = ARGV[0].to_i, ARGV[1].to_i, ARGV[2].to_i, ARGV[3]
+  rows, cols, num, per_page, header = ARGV[0].to_i, ARGV[1].to_i, ARGV[2].to_i, ARGV[3].to_i, ARGV[4]
 
-  Bingo.new(rows: rows, cols: cols, header: header, num_cards: num, cards_per_page: 3).generate
+  Bingo.new(rows: rows, cols: cols, header: header, num_cards: num, cards_per_page: per_page).generate
 end

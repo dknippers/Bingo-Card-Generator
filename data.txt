@@ -1,0 +1,6 @@
+﻿9 8/9
+PIr^(2)
+360DEG
+f(x) = 3x^(2) + 5x - 10
+SQRTx
+! from: 0 to: 20 step: 1
